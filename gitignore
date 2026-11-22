@@ -1,0 +1,25 @@
+# --- Secrets (NEVER upload these) ---
+.env
+.streamlit/secrets.toml
+
+# --- Python junk ---
+__pycache__/
+*.pyc
+venv/
+.venv/
+env/
+
+# --- Files the app creates by itself (it can rebuild them) ---
+data/uploads/
+data/parsed/
+data/clean/
+chunks.txt
+
+# --- Editor / computer junk ---
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# --- Optional: remove the # below if you do NOT want your PDFs on GitHub ---
+# data/*.pdf
