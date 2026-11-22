@@ -1,0 +1,410 @@
+===== PAGE 1 =====
+# TRIBHUVAN UNIVERSITY
+
+# INSTITUTE OF ENGINEERING
+
+ADVANCED COLLEGE OF ENGINEERING AND MANAGEMENT DEPARTMENT OF ELECTRONICS AND COMPUTER ENGINEERING KALANKI, KATHMANDU
+
+ADVANCED COLLEGE
+
+# A Major Project Proposal Defense Report On
+
+“Autonomous Multi-Agent Platform for Code Refactoring and Documentation”
+
+[Project Code: CT 707]
+
+# Submitted By:
+
+Aditya Pandit ACE078BCT006 Isha Shah ACE078BCT029 Larisha Lamichanne ACE078BCT039 Pratishtha Gautam ACE078BCT048
+
+A Major Project Proposal report submitted to the Department of Electronics and Computer Engineering in the partial fulfillment of the requirements for degree of Bachelor of
+
+Engineering in Computer Engineering Kathmandu, Nepal
+
+June 11, 2025
+
+===== PAGE 2 =====
+## ACKNOWLEDGEMENT
+
+We take this opportunity to express our deepest and sincere gratitude to our Academic Project Coordinator Er. Ramesh Sharma , Department of Electronics and Computer Engineering for his insightful advice, motivating suggestions, invaluable guidance, help and support in this project selection and also for his constant encouragement and advice throughout our journey till the date.
+
+We express our deep gratitude to Er. Roshani Ghimire , Head of Department of Electronics and Computer Engineering, Er. Navaraj Banstola , Deputy Head, Department of Electronics and Computer Engineering for their regular support, co-operation, and coordination.
+
+The in-time facilities provided by the department are also equally acknowledgeable.
+
+We would like to convey our thanks to the teaching and non-teaching staff of the Department of Electronics & Communication and Computer Engineering, ACEM for their invaluable help and support hitherto. We are also grateful to all our classmates for their help, encouragement and invaluable suggestions.
+
+Finally, yet more importantly, we would like to express our deep appreciation to our grandparents, parents, siblings for their perpetual support and encouragement.
+
+Sincerely, Aditya Pandit ACE078BCT006 Isha Shah ACE078BCT029 Larisha Lamichanne ACE078BCT039 Pratishtha Gautam ACE078BCT048
+
+===== PAGE 3 =====
+# Table of Contents
+
+ACKNOWLEDGEMENT ii
+List of Tables v
+List of Figures vi
+List of Abbreviations/Acronyms vii
+CHAPTER 1 1
+INTRODUCTION 1
+1.1 Background 2
+1.2 Motivation 2
+1.3 Statement of the Problem 3
+1.4 Project objective 3
+1.5 Significance of the study 3
+CHAPTER 2 4
+LITERATURE REVIEW 4
+CHAPTER 3 8
+REQUIREMENT ANALYSIS 8
+3.1 Software Requirements 8
+3.2 Functional Requirements 8
+3.3 Non-Functional Requirements 10
+3.4 Feasibility Study Technical Feasibility: 10
+CHAPTER 4 11
+SYSTEM DESIGN AND ARCHITECTURE 11
+4.1 Block Diagram 11
+4.2 Use Case Diagram 12
+4.3 DFD 13
+CHAPTER 5 14
+METHODOLOGY 14
+5.1 System Overview 14
+5.2 Input Message Processing 14
+5.3 Multi-Agent Architecture 14
+5.4 Agent Creation 15
+
+===== PAGE 4 =====
+5.5 Code Specific Context 15
+5.6 Communication Among Multiple Agents 15
+5.7 Development Model 17
+CHAPTER 6 19
+EXPECTED OUTPUT 19
+CHAPTER 7 20
+TIME SCHEDULE 20
+REFERENCES 21
+
+===== PAGE 5 =====
+## List of Tables
+
+Title Page Table 2.1: Summary of the Literature Review 7
+
+===== PAGE 6 =====
+## List of Figures
+
+Title | Page
+Figure 4.1: Block Diagram of the System ...11
+Figure 4.2: Use Case Diagram 12
+Figure 4.3: Level 0 DFD 13
+Figure 4.4: Level 1 DFD 13
+Figure 5.1: Agile Model 17
+Figure 7.1: Gantt Chart 20
+
+===== PAGE 7 =====
+## List of Abbreviations/Acronyms
+
+AI - Artificial Intelligence
+
+AST - Abstract Syntax Tree CI/CD - Continuous Integration / Continuous Deployment CRer - Code Review dataset GPT- 4 Generative Pre-trained Transformer 4
+
+LLaMA - Large Language Model Meta AI LLM - Large Language Model LoRA - Low-Rank Adaptation PEFT - Parameter Efficient Fine-Tuning
+
+QA - Quality Assurance REST API - Representational State Transfer Application Programming Interface
+
+===== PAGE 8 =====
+## CHAPTER 1
+
+## INTRODUCTION
+
+In order to guarantee code quality, maintainability, teamwork, and the long-term success of software projects, refactoring of code and documentation are essential procedures in contemporary software development. Appropriate documentation facilitates maintenance, effectively onboards new developers, and acts as a living reference for comprehending intricate code logic. Pull request validation and standards enforcement are two examples of code refactoring-related practices that support development best practices, encourage knowledge sharing, and assist in finding bugs early.
+
+Due to strict deadlines, developer fatigue, and the propensity to concentrate on coding rather than other duties, these tasks are frequently deprioritized despite their significance. When developers are the only ones in charge of documentation and refactoring of code, serious problems occur. Particularly when pressed for time, manual code refactoring can be hurried, biased, or inconsistent. Because it takes more work and produces no results right away, documentation is usually out-of-date or lacking. It gets harder to maintain uniform standards and visibility across codebases as software projects grow in size, which leads to technical debt, onboarding difficulties, and decreased transparency.
+
+This project suggests an autonomous agent for code project management, refactoring of code, and documentation in order to address these problems. By examining the programmer's actual code, this AI-powered system is intended to help with or completely automate these crucial tasks. The system can create thorough documentation and perform intelligent code refactoring by utilizing intelligent planning agents and large language models. While maintaining high standards of software quality and organization, this method not only guarantees accuracy and consistency but also lessens the manual workload on developers, freeing them up to concentrate on solving complex problems.
+
+===== PAGE 9 =====
+## 1.1 Background
+
+With the increasing complexity and collaboration of software systems, there is a greater need than ever for efficient and consistent refactoring of code and documentation. Developers have historically handled these responsibilities by hand, which frequently leads to inconsistent work, human error, and out-of-date or inadequate documentation—especially when deadlines are short. Refactoring of code is crucial for finding errors, maintaining coding standards, and preserving code quality, while documentation guarantees dependability, knowledge transfer, and long-term maintainability. Many of these time-consuming and error-prone procedures can now be automated thanks to recent developments in artificial intelligence, especially large language models and autonomous agent frameworks. AI systems can conduct intelligent refactoring of code checks and produce clear, correct documentation by examining the actual code that developers write. This improves the software development lifecycle's accuracy, consistency, and general quality while decreasing the manual workload for developers.
+
+## 1.2 Motivation
+
+Our main motivation lies in making documentation easier for programmers so that this part doesn't just get shelved for long time period but rather goes along side programming. Developers frequently put feature delivery ahead of necessary but time-consuming tasks like refactoring of code and documentation in the fast-paced world of software development. This results in problems like undiscovered bugs, inconsistent standards, out-of-date documentation, and inadequate coordination. The project intends to address this by creating an AI-powered autonomous agent that examines developer code to manage refactoring of code checks automatically and produce precise documentation. We aim to provide an AI powered tool that will ensure all the codes are documented and reviewed correctly. Developers can concentrate on resolving intricate issues while upholding high standards of quality throughout the development lifecycle by minimizing the manual workload.
+
+===== PAGE 10 =====
+## 1.3 Statement of the Problem
+
+Despite being crucial elements of the software development lifecycle, refactoring of code and documentation are frequently carried out irregularly or completely ignored. Because these tasks are usually repetitive, time-consuming, and provide little opportunity for creative engagement, developers tend to put feature development ahead of upholding documentation and quality standards. Undiscovered bugs, poor maintainability, onboarding challenges, and mounting technical debt are some of the issues that result from this. Manually carrying out these duties is also susceptible to bias, human error, and exhaustion, particularly when time is of the essence. Intelligent systems that can reliably and independently carry out these tasks are still lacking, and relatively new despite recent developments in AI. An AI-powered autonomous agent that can analyze developer code to perform refactoring of code and produce accurate documentation with little assistance from humans is therefore desperately needed.
+
+## 1.4 Project objective
+
+To create an AI-powered autonomous agent that automates code refactoring and documentation by analyzing code written by developers.
+
+## 1.5 Significance of the study
+
+This study is important because it tackles a prevalent issue in current software development, the manual and uneven management of documentation and refactoring of code. The study provides a solution that lowers human error, saves development time, and guarantees consistent software quality by creating an AI-powered autonomous agent that can intelligently analyze developers' code to automate these tasks. It promotes long-term code maintainability, speeds up onboarding, and improves team collaboration all of which lead to more dependable and effective software development processes. The study makes these simple yet important tasks easier so that they can be done on time and ultimately make things easier for the programmer and cost-effective too.
+
+===== PAGE 11 =====
+## CHAPTER 2
+
+## LITERATURE REVIEW
+
+Software startups operate in dynamic and tightly constrained environments that need to innovate quickly and with limited resources. Moreover, they face unique challenges in how to manage their development process [1].
+
+Code refactoring remains a challenge for developers, to improve code efficiency and quality. While code refactoring agents like IntelliJ IDEA and JDeodorant exist for intelligent refactoring, detailed refactoring parameters still need to be implemented. This poses a challenge to developers, requiring additional time constraints and expertise. In this context as an alternative, Large Language Models (LLMs) like GPT-4 demonstrate high functionality, especially in solving complex problems. LLMs possess the potential to autonomously identify refactoring opportunities. However, without clear and concrete guidance, LLMs may struggle to accurately pinpoint such opportunities [2].
+
+As a solution to generic LLMs and their limitation, work has been done in increasing capabilities of LLMs in low resource settings through composition and finetuning. Recent work has explored transformer-based deep learning architectures to automate code review activities, including recommending code changes to contributors and generating code from reviewer comments, achieving promising results with meaningful recommendations in up to 16% and 31% of cases respectively, although further improvements are necessary for practical adoption by developers [3].
+
+In code review tasks, LLaMA-Reviewer, a framework that combines the LLaMA large language model (LLM) with parameter-efficient fine-tuning (PEFT) methods such as Low-Rank Adaptation (LoRA), has shown exceptional performance. Even with little tuning, LLaMA-Reviewer performed better on the CRer dataset than all baseline models, including those specially pre-trained for code review [4].
+
+Identifying the lines of code that are most likely to cause issues is another way to increase the effectiveness of code reviews. By anticipating lines that will be revised or receive reviewer comments, REVSPOT, a machine learning-based method, tackles the laborious nature of manual code review.
+
+===== PAGE 12 =====
+When tested on three open-source projects (OpenStack Nova, OpenStack Ironic, and Qt Base), REVSPOT outperformed baseline techniques with a Top-10 Accuracy of 81% for comment prediction and 93% for revision prediction. Our approach, on the other hand, is intended to function in lowresource or startup environments where such data might not be available. Rather than relying on large historical review logs, we use a lightweight, modular, LLM-powered multi-agent framework that uses composition techniques like LoRA and prompt tuning to enable the system to generalize across projects [5].
+
+Fine-tuning all parameters of LLMs requires significant hardware resources, which can be impractical for typical users. As a workable substitute for complete fine-tuning, Low-Rank Adaptation (LoRA) has emerged as one of the most popular methods for Parameter Efficient Fine-Tuning (PEFT) of Large Language Models (LLMs). With average gains of 34 and 10 points, respectively, across 10 base models and 31 tasks (310 total combinations), recent work has shown that 4-bit LoRA-fine-tuned models can outperform both base models and GPT-4 in the context of real-world deployment across a wide range of tasks. Additionally, LoRA facilitates effective resource utilization: By sharing base weights and dynamically loading adapters, LoRAX, an open-source Multi-LoRA inference server, makes it possible to deploy multiple LoRA-fine-tuned models on a single GPU [6].
+
+Distributed decision-making and cooperative problem-solving are ideal applications for multi-agent systems (MAS), where system structure is crucial to agent interaction. Agents in LLM-based MAS assume specialized roles to manage challenging tasks, mainly depending on internal communication to share evaluations, contextual signals, and status updates. Throughout the system, this interaction promotes coherence, coordination, and adaptability. In dynamic environments and hierarchical task execution, where agents are constantly improving their behavior to improve system performance, this kind of communication is especially important. Thus, MAS frameworks provide modular and scalable solutions for intricate real-world applications [7].
+
+Multi-Agent LLM systems have been worked upon to build documentation and review systems. A multi-agent LLM-based system called Code Agent was created to model cooperative team dynamics in code reviews. In contrast to conventional single-model approaches, Code Agent’s four-phase process—Basic Info Sync, Code Review, Code Alignment, and Documentation—defines distinct
+
+===== PAGE 13 =====
+roles, including Reviewer, CTO, and QA-Checker. Agents have structured, instruction-following conversations during each phase. One noteworthy invention is the QA-Checker, a supervisory agent that fixes the problem of prompt drifting in multi-agent communication by guaranteeing prompt coherence and task focus. With up to 93% Top-10 Accuracy in comment prediction and a 30% improvement in code edit progress metrics, Code Agent outperformed GPT-4 and other models in tasks like vulnerability detection, code-style consistency, and code revision [8].
+
+Another agent, Repo Agent is an open-source framework that uses large language models to generate code documentation at the repository level. Repo Agent examines the global structure of repositories to produce thorough, semantically coherent documentation, in contrast to earlier methods that concentrated on function-level or class-level summaries. Documentation Generation through structured prompts, Documentation Update through Git hooks for real-time synchronization with code changes, and Global Structure Analysis through AST and reference relationships are its three main components. With preference rates of 70% and 91% on real-world repositories, Repo Agent performs better in blind preference tests than human-authored documentation. Additionally, it exhibits accurate parameter detection and high recall for reference identification. Thus, Repo Agent shows how useful and efficient LLMs are at keeping accurate and current project documentation, which makes it especially appropriate for low-resource environments where manual documentation is timeconsuming [2].
+
+===== PAGE 14 =====
+Table 2.1: Summary of the Literature Review
+
+Ref | Study | Focus Area | Contribution | Methodology | Key Results
+[1] | Paternoster et al. (2014) | Startups & Software Dev | Development challenges in startups | Systematic Mapping Study | Highlights resource constraints
+[2] | Luo et al. (2024) | Code Documentation | Repo Agent for repository-level doc | LLM + Structured Prompting + Git Hooks | Outperformed human docs in 70–91%
+[3] | Tufano et al. (2021) | Code Review Automation | Transformer-based code review | Deep Learning | Meaningful suggestions: 16– 31%
+[4] | Lu et al. (2023) | LLM Fine-Tuning | LLaMA-Reviewer using LoRA | PEFT on LLaMA | Outperformed all baselines
+[5] | Hong et al. (2022) | Line Recommendation | REVSPOT for revision/comment pred. | ML-based prediction | 81–93% Top-10 accuracy
+[6] | Zhao et al. (2024) | Efficient LLM Fine-Tuning | LoRA Land & LoRAX system | LoRA + 4-bit PEFT | Beat GPT-4 in many tasks
+[7] | Li et al. (2024) | Multi-Agent Systems | Survey of MAS with LLMs | Framework analysis | Highlights coordination, modularity
+[8] | Tang et al. (2024) | Code Review Collaboration | Code Agent with QA-Checker | Multi-agent LLM system | 30% edit improvement, 93% accuracy
+
+===== PAGE 15 =====
+## CHAPTER 3
+
+## REQUIREMENT ANALYSIS
+
+## 3.1 Software Requirements
+
+The development and implementation require appropriate tools and platforms.
+
+## Development Tools:
+
+- Programming Languages:
+
+- Python – Preferred for agent orchestration, LLama integration, LLM orchestration frameworks
+
+- TypeScript / Node.js – Backend logic, real-time handling, and REST API services
+
+- JavaScript (React) – Frontend UI development
+
+Framework : AutoGen, CrewAI
+
+## Machine Learning Libraries:
+
+Data Processing: Pandas, NumPy.
+
+Database: MongoDB or PostgreSQL for storing historical data. Version Control: Git/GitHub for version management and collaboration. Deployment Tools: Vercel/Netlify for deploying React frontend. Docker for containerization. Heroku or AWS for cloud deployment.
+
+## 3.2 Functional Requirements
+
+Functional requirements describe what the system will do to meet the project goals.
+
+===== PAGE 16 =====
+## Functionalities:
+
+## 3.2.1 Review of code
+
+Implement multi-agent LLM technology that allows the system to do the following:
+
+- Noticing differences in the contents of the code and the text used in the commit.
+
+- Finding possible security problems.
+
+- Making certain that the code follows the established guidelines.
+
+- Coming up with ways to make the code better.
+
+- Including a supervisory agent (for example, QA-Checker) will help ensure team looks at all needed aspects.
+
+## 3.2.2 Instant Creating of Documents
+
+Support agents in:
+
+- Stay on top of completing and modifying technical documentation together with code development.
+
+- <mark>Utilize tools like JSDoc or Sphinx for documentation generation.</mark>
+
+- <mark>Maintain documentation consistency through version control systems like Git.</mark>
+
+## 3.2.3 Automation used in project management
+
+Train agents to do the following.
+
+- Gather and select the important requirements from several places.
+
+- Make user stories and tasks so that the process is easier.
+
+- Regularly keep track of the project’s progress and keep everyone informed.
+
+- Help others to share thoughts and ideas with each other.
+
+===== PAGE 17 =====
+## 3.3 Non-Functional Requirements
+
+Non-functional requirements define the system’s quality attributes.
+
+Performance: Ensure low-latency responses for real-time code analysis and feedback. Security: Implement authentication and authorization mechanisms to protect code and documentation.
+
+Usability: Create an intuitive UI/UX to facilitate user interactions with the system.
+
+Scalability: Design the system to handle multiple projects and concurrent users.
+
+## 3.4 Feasibility Study Technical Feasibility:
+
+Strengths: Modular microservices architecture (Node.js, RestAPI) enables isolated development and scalability.
+
+Challenges: Integrating LLM-based agents with existing codebases, Git workflows, and CI/CD pipelines is complex.
+
+## Economic Feasibility:
+
+Costs: LLM usage incurs costs based on tokens/models; can be mitigated with open-source models or lower-tier paid tiers.
+
+## Operational Feasibility:
+
+Addresses real developer pain points: reducing manual reviews, increasing code quality, and ensuring up-to-date documentation. Modular multi-agent structure aligns with current DevOps practices and can fit into existing pipelines.
+
+## Time Feasibility:
+
+Assuming consistent effort, a basic prototype can be developed within a few months. Advanced features, such as deployment or complex dashboards, may take more time.
+
+===== PAGE 18 =====
+## CHAPTER 4
+
+## SYSTEM DESIGN AND ARCHITECTURE
+
+## 4.1 Block Diagram
+
+User Web Application Code Parsing REST APIs Database and Preprocess Orchestration Message Queue Agent RefactorAgent DocAgent Restructuring Documentation
+
+Figure 4.1: Block Diagram of the System
+
+===== PAGE 19 =====
+## 4.2 Use Case Diagram
+
+AUTONOMOUS CODE PLATFORM <<include>> Request to LLM Upload code Agent V Review feedback User System View generated Generate documentation Documentation
+
+Figure 4.2: Use Case Diagram
+
+===== PAGE 20 =====
+## 4.3 DFD
+
+request API store data User Web App request System Agent Results Database ouput send data
+
+Figure 4.3: Level 0 DFD
+
+User LLM agent Parsed code Code parser Orchestrator Upload code Code store Agent output Docs/Review Output storage Generated result to user Result fetcher
+
+Figure 4.4: Level 1 DFD
+
+===== PAGE 21 =====
+## CHAPTER 5
+
+## METHODOLOGY
+
+## 5.1 System Overview
+
+The platform is built as a web application, functioning with a complete stack-based system. The platform hosts multiple agents and follows a modular microservice architecture. The multiple agents control different functionalities, and are integrated into a unified platform built on the MERN stack (MongoDB, Express.js, React.js, Node.js) for frontend and backend, while the multi-agent system is built upon Lang graph and Crew AI. Communication between the modules is to be done using REST APIs and asynchronous message queuing.
+
+## 5.2 Input Message Processing
+
+The user is able to input code into a sandbox environment on the platform. The code first goes through a parsing and preprocessing step when a user submits it to the platform, whether for planning, testing, review, or documentation. The system examines the input's syntactic and semantic structure using a specialized code parser. Abstract syntax trees (ASTs), method signatures, and metadata like variable types, function calls, and dependencies are all extracted during this parsing process. The downstream agents can efficiently consume and interpret the code using a uniform interface made possible by the structured representation. Relevant agents then take over the processing duty to orchestrate the functions.
+
+## 5.3 Multi-Agent Architecture
+
+The platform is designed to facilitate multiple agents that perform code refactoring and code documentation. The agents are LLM-powered through a centralized layer that manages task sequencing, data flow, and communication. There are two proposed agents with different functionalities: Refactor Agent and DocAgent.
+
+===== PAGE 22 =====
+## 5.4 Agent Creation
+
+Each agent is built as a modular LLM-powered component, which handles a specific part of the platform. The agent is built upon LLaMa models, extended with lightweight task-specific augmentation. Instead of fine-tuning the base model, we use a composition-based approach, where agents are built using frozen LLaMA weights and new behavior is injected using auxiliary control modules, low-rank adapters (LoRA), or prompt engineering. The three main components of each agent are a task-optimized prompt template, a frozen LLaMA backend for inference, and an execution and inter-agent communication interface that is compatible with Crew AI or Lang Graph. Each agent is built around a particular software engineering task.
+
+## 5.5 Code Specific Context
+
+We build code-specific context for both agents. We use two carefully chosen datasets to train and evaluate our code intelligence agents. The DocAgent is trained using Reviewed Code Pairs (RCP), where each pair <ms, mr> indicates abstracted methods before and after code review. This data allows the agent to learn structural and semantic changes and produce documentation that reflects intent and reasoning.
+
+The Refactor Agent combines the submitted method (ms), its revised version (mr), and natural language reviewer feedback (rnl) using the Reviewed Commented Code Triplets (RCCT) dataset, which is arranged as <rnl, ms, mr>. This triplet structure allows the agent to generate contextual refactoring suggestions based on reviewer code and intent. The two datasets are separated into training (80%), validation (10%), and test (10%).
+
+## 5.6 Communication Among Multiple Agents
+
+To control agent communication and orchestration, the platform uses a centralized coordination layer based on Crew AI and Lang graph. Modular and decoupled execution is made possible by agents' asynchronous operation and interaction through a combination of REST APIs and message queues (such as RabbitMQ or Kafka). Task sequencing is managed by the coordination layer, which makes sure that dependent operations—like creating documentation prior to starting a refactor—are carried out in the right order. To enable consistent and comprehensible communication, agents exchange
+
+===== PAGE 23 =====
+structured intermediate data in JSON format, such as parsed code and review comments. With the help of an event-driven messaging system, agents can publish and subscribe to important events (such as "Code Parsed" and "Refactor Completed"), which will start downstream processes without stopping them.
+
+===== PAGE 24 =====
+## 5.7 Development Model
+
+## Agile Model
+
+AGILE DEO TEST REVIEW DEVE DESIGN PLAN LAUNCH
+
+Figure 5.1: Agile Model
+
+Source : https://www.orientsoftware.com/blog/v-model-vs-agile/
+
+1. Requirements: In this phase, we must define the requirements. We should explain business opportunities and plan the time and effort needed to build the project. Based on this information, we can evaluate technical and economic feasibility.
+
+2. Design: After identifying the project, we work with stakeholders to define requirements. Then, we can use UML diagram to show the work of new features and how it will apply to your existing system.
+
+3. Construction/ Iteration: When the team defines the requirements, the work begins. Designers and developers start working on their project, which aims to deploy a working product. The 17
+
+===== PAGE 25 =====
+product will undergo various stages of improvement, so it includes simple, minimal functionality.
+
+4. Testing: In this phase, the Quality Assurance team examines the product's performance and looks for the bug.
+
+5. Deployment: In this phase, the team issues a product for the user's work environment.
+
+6. Feedback: After releasing the product, the last step is feedback. In this, the team receives feedback about the product and works through the feedback.
+
+===== PAGE 26 =====
+## CHAPTER 6
+
+## EXPECTED OUTPUT
+
+This project will deliver a web-based platform powered by AI-driven agents to automate key software development tasks. Users can upload code and choose from tools like the Documentation Agent, which creates readable comments and documentation, and the Code Refactoring Agent, which enhances code structure without affecting functionality. The platform reduces manual labor and improves the quality and maintainability of the code by processing the input and displaying the results in an intuitive interface.
+
+===== PAGE 27 =====
+## CHAPTER 7
+
+## TIME SCHEDULE
+
+AUTONOMOUS MULTI-AGENT PLATFORM FOR CODE REFACTORING AND DOCUMENTATION TASKS MONTH1 MONTH 2 MONTH 3 MONTH 4 MONTH 5 MONTH 6 MONTH7 MONTH 8 MONTH 9 MONTH 10 Documentation Project Planning Data Collection Data Preprocessing Model Development Model Training Model Evaluation Model Optimization Deployment Monitoring and Maintainence
+
+Figure 7.1: Gantt Chart
+
+===== PAGE 28 =====
+## REFERENCES
+
+[1] Paternoster, N., Giardino, C., Unterkalmsteiner, M., Gorschek, T., & Abrahamsson, P. (2014). Software development in startup companies: A systematic mapping study . Information and Software Technology, 56(10), 1200–1218.
+
+[2] Luo, Q., Ye, Y., Liang, S., Zhang, Z., Qin, Y., Lu, Y., ... & Sun, M. (2024). RepoAgent: An LLMpowered open-source framework for repository-level code documentation generation . arXiv preprint arXiv:2402.16667.
+
+[3] Tufano, R., Pascarella, L., Tufano, M., Poshyvanyk, D., & Bavota, G. (2021, May). Towards automating code review activities . In 2021 IEEE/ACM 43rd International Conference on Software Engineering (ICSE) (pp. 163–174). IEEE.
+
+[4] Lu, J., Yu, L., Li, X., Yang, L., & Zuo, C. (2023, October). LLaMA-Reviewer: Advancing code review automation with large language models through parameter-efficient fine-tuning . In 2023 IEEE 34th International Symposium on Software Reliability Engineering (ISSRE) (pp. 647–658). IEEE.
+
+[5] Hong, Y., Tantithamthavorn, C. K., & Thongtanunam, P. P. (2022, March). Where should I look at? Recommending lines that reviewers should pay attention to . In 2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER) (pp. 1034–1045). IEEE.
+
+[6] Zhao, J., Wang, T., Abid, W., Angus, G., Garg, A., Kinnison, J., ... & Rishi, D. (2024). LoRA Land: 310 fine-tuned LLMs that rival GPT-4, a technical report . arXiv preprint arXiv:2405.00732.
+
+[7] Li, X., Wang, S., Zeng, S., Wu, Y., & Yang, Y. (2024). A survey on LLM-based multi-agent systems: Workflow, infrastructure, and challenges . Vicinagearth, 1(1), 9.
+
+[8] Tang, X., Kim, K., Song, Y., Lothritz, C., Li, B., Ezzini, S., ... & Bissyandé, T. F. (2024). CodeAgent: Autonomous communicative agents for code review . arXiv preprint arXiv:2402.02172.
+
