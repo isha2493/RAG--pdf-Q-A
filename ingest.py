@@ -1,8 +1,3 @@
-"""One-call pipeline for a newly uploaded PDF:
-save file -> parse -> clean -> chunk -> store in Postgres -> embed.
-
-Used by app.py. You can also run it by hand:  python ingest.py data/rag-ios.pdf
-"""
 import sys
 from pathlib import Path
 
@@ -15,7 +10,7 @@ UPLOAD_DIR = BASE_DIR / "data" / "uploads"
 
 
 def ingest_pdf_file(path: str) -> str:
-    """Run the full pipeline on a PDF that is already on disk. Returns its filename."""
+    
     load_pdf(path)                # parse + clean + chunk + save to the database
     embed_all_new_chunks()        # embeds only chunks that have no embedding yet
     name = Path(path).name
@@ -34,7 +29,7 @@ def ingest_pdf_file(path: str) -> str:
 
 
 def ingest_pdf_bytes(data: bytes, original_name: str) -> str:
-    """Save uploaded bytes into data/uploads/ and run the pipeline on them."""
+    
     UPLOAD_DIR.mkdir(parents=True, exist_ok=True)
     path = UPLOAD_DIR / Path(original_name).name      # .name strips any folder parts
     path.write_bytes(data)

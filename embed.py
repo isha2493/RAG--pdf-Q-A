@@ -1,11 +1,7 @@
-"""Embed every chunk that has no embedding yet and store it in chunks.embedding.
 
-Re-running is safe: only rows with embedding IS NULL are processed.
-(load_db.py re-creates chunks, so run this again after reloading a PDF.)
-"""
 from db import get_connection
 
-MODEL_NAME = "intfloat/multilingual-e5-small"   # 384 dims, English + Nepali
+MODEL_NAME = "intfloat/multilingual-e5-small"   
 BATCH = 32
 
 _model = None

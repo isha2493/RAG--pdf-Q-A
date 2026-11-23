@@ -1,7 +1,3 @@
-"""Semantic search over embedded chunks.
-
-Usage: python search.py "your question" [top_k] [pdf_filename]
-"""
 import sys
 
 import numpy as np
