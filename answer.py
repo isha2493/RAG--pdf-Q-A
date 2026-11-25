@@ -113,6 +113,10 @@ def answer_question(question: str, filename: str) -> dict:
     not_found = {"found": False, "answer": NOT_FOUND_MESSAGE, "sources": []}
 
     hits = search(question, TOP_K, filename)
+    for score, filename, page, chunk_index, content in hits:
+      print(f"Score: {score:.4f} | Page: {page}")
+      print(f"Content: {content[:200]}")
+      print("-" * 50)
     if not hits:
         return not_found
 

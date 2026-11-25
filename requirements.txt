@@ -4,4 +4,5 @@ pymupdf
 pymupdf4llm
 sentence-transformers
 numpy
-streamlit    
+streamlit
+chromadb

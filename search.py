@@ -1,33 +1,29 @@
+"""Semantic search with the Chroma vector database (HNSW index).
+
+Usage: python search.py "your question" [top_k] [pdf_filename]
+"""
 import sys
 
-import numpy as np
-
-from db import get_connection
 from embed import embed_query
+from vectorstore import get_collection
 
 
 def search(query: str, k: int = 5, filename: str | None = None):
-    """Return the k best chunks as (score, filename, page, chunk_index, content).
+    """Return the k best chunks as (score, filename, page, chunk_index, content). Higher score = better.
 
-    If `filename` is given, only that PDF is searched (so answers come from
-    the PDF the user picked, not from every PDF in the database).
+    If `filename` is given, only that PDF is searched.
     """
-    sql = """SELECT d.filename, c.page_number, c.chunk_index, c.content, c.embedding
-             FROM chunks c JOIN documents d ON d.id = c.document_id
-             WHERE c.embedding IS NOT NULL"""
-    params: list = []
-    if filename:
-        sql += " AND d.filename = %s"
-        params.append(filename)
-
-    with get_connection() as conn:
-        rows = conn.execute(sql, params).fetchall()
-    if not rows:
-        return []
-    matrix = np.array([r[4] for r in rows], dtype=np.float32)   # vectors are normalized -> dot = cosine
-    scores = matrix @ embed_query(query)
-    top = np.argsort(-scores)[:k]
-    return [(float(scores[i]), *rows[i][:4]) for i in top]
+    options = {"where": {"filename": filename}} if filename else {}
+    res = get_collection().query(
+        query_embeddings=[embed_query(query).tolist()],
+        n_results=k,
+        include=["documents", "metadatas", "distances"],
+        **options,
+    )
+    out = []
+    for doc, meta, dist in zip(res["documents"][0], res["metadatas"][0], res["distances"][0]):
+        out.append((1 - float(dist), meta["filename"], meta["page"], meta["chunk_index"], doc))
+    return out
 
 
 if __name__ == "__main__":
